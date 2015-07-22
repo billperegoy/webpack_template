@@ -4,30 +4,43 @@ myApp.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
     $routeProvider.
       when('/', {
-        templateUrl: 'html/home.html'
+        templateUrl: 'html/partials/home.html'
       }).
       when('/good', {
-        templateUrl: 'html/good-stooges.html',
-        controller: 'GoodStoogeController'
+        templateUrl: 'html/partials/good-stooges.html',
+        controller: 'GoodStoogeController',
+        resolve: {
+          app: function ($q) {
+                 var d = new Date();
+                 console.log(d);
+                 var defer = $q.defer();
+                 defer.resolve();
+                 d = new Date();
+                 console.log(d);
+                 return defer.promise;
+               }
+        }
       }).
       when('/bad', {
-        templateUrl: 'html/bad-stooges.html',
+        templateUrl: 'html/partials/bad-stooges.html',
         controller: 'BadStoogeController'
       }).
       when('/soso', {
-        templateUrl: 'html/soso-stooges.html',
+        templateUrl: 'html/partials/soso-stooges.html',
         controller: 'SosoStoogeController'
       }).
       otherwise({
-        templateUrl: 'html/four-o-four.html'
+        templateUrl: 'html/partials/four-o-four.html'
       });
 
       $locationProvider.html5Mode(true);
   }]);
 
+/*
 myApp.controller('MainController', ['$scope', '$http', function($scope, $http) {
   $scope.dynamic_text = "This is text added by Angular";
 }]);
+*/
 
 myApp.controller('GoodStoogeController', ['$scope', '$http', function($scope, $http) {
 

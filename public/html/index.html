@@ -13,8 +13,9 @@
     <script src="js/main_controller.js"></script>
   </head>
 
-  <body ng-controller="MainController">
+  <body>
     <div class="container">
+
       <div class="btn-group" role="group" aria-label="...">
         <button type="button" class="btn btn-info">
           <a href="/">Home</a>
@@ -29,10 +30,6 @@
           <a href="/#/soso">SoSo</a>
         </button>
       </div>
-
-      <h1>Hello World</h2>
-      <h2 class="change-color">This color will change</h2>
-      <h2 class="change-text">{{ dynamic_text }} </h2>
 
       <div ng-view></div>
     </div>
