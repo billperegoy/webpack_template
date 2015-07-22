@@ -1,5 +1,6 @@
 <html ng-app="mainApp">
   <head>
+    <base href="/">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <script src="js/open-source/angular.min.js"></script>
     <script src="js/open-source/angular-route.min.js"></script>
@@ -11,21 +12,5 @@
     <h2 class="change-text">{{ dynamic_text }} </h2>
 
     <div ng-view></div>
-    <!--
-    <h3>Good Stooges</h3>
-    <ul>
-      <li ng-repeat="stooge in stooges.good"> {{ stooge }}</li>
-    </ul>
-
-    <h3>Bad Stooges</h3>
-    <ul>
-      <li ng-repeat="stooge in stooges.bad"> {{ stooge }}</li>
-    </ul>
-
-    <h3>So-so Stooges</h3>
-    <ul>
-      <li ng-repeat="stooge in stooges.soso"> {{ stooge }}</li>
-    </ul>
-    -->
   </body>
 </html>

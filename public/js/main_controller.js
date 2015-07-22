@@ -1,8 +1,11 @@
 var myApp = angular.module('mainApp',['ngRoute']);
 
-myApp.config(['$routeProvider',
-  function($routeProvider) {
+myApp.config(['$routeProvider', '$locationProvider',
+  function($routeProvider, $locationProvider) {
     $routeProvider.
+      when('/', {
+        templateUrl: 'html/home.html'
+      }).
       when('/good', {
         templateUrl: 'html/good-stooges.html',
         controller: 'GoodStoogeController'
@@ -14,7 +17,12 @@ myApp.config(['$routeProvider',
       when('/soso', {
         templateUrl: 'html/soso-stooges.html',
         controller: 'SosoStoogeController'
-      })
+      }).
+      otherwise({
+        templateUrl: 'html/four-o-four.html'
+      });
+
+      $locationProvider.html5Mode(true);
   }]);
 
 myApp.controller('MainController', ['$scope', '$http', function($scope, $http) {
