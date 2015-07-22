@@ -1,16 +1,40 @@
 <html ng-app="mainApp">
   <head>
     <base href="/">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+    <script src="js/open-source/jquery-1.11.3.min.js"></script>
+    <script src="js/open-source/bootstrap.min.js"></script>
     <script src="js/open-source/angular.min.js"></script>
     <script src="js/open-source/angular-route.min.js"></script>
+
     <script src="js/main_controller.js"></script>
   </head>
-  <body ng-controller="MainController">
-    <h1>Hello World</h2>
-    <h2 class="change-color">This color will change</h2>
-    <h2 class="change-text">{{ dynamic_text }} </h2>
 
-    <div ng-view></div>
+  <body ng-controller="MainController">
+    <div class="container">
+      <div class="btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-info">
+          <a href="/">Home</a>
+        </button>
+        <button type="button" class="btn btn-info">
+          <a href="/#/good">Good</a>
+        </button>
+        <button type="button" class="btn btn-info">
+          <a href="/#/bad">Bad</a>
+        </button>
+        <button type="button" class="btn btn-info">
+          <a href="/#/soso">SoSo</a>
+        </button>
+      </div>
+
+      <h1>Hello World</h2>
+      <h2 class="change-color">This color will change</h2>
+      <h2 class="change-text">{{ dynamic_text }} </h2>
+
+      <div ng-view></div>
+    </div>
   </body>
 </html>

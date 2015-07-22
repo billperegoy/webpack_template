@@ -26,12 +26,7 @@ myApp.config(['$routeProvider', '$locationProvider',
   }]);
 
 myApp.controller('MainController', ['$scope', '$http', function($scope, $http) {
-  $scope.dynamic_text = "This is text added by Angular"
-
-  $http.get('http://localhost:4567/api/stooges').
-    success(function(data, status, headers, config) {
-      $scope.stooges = data;
-    })
+  $scope.dynamic_text = "This is text added by Angular";
 }]);
 
 myApp.controller('GoodStoogeController', ['$scope', '$http', function($scope, $http) {
