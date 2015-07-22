@@ -1,5 +1,19 @@
 var myApp = angular.module('mainApp',['ngRoute']);
 
+myApp.service('stoogesService', function() {
+});
+
+/*
+  .factory('stoogesService', function() {
+    var result = {good: ['a', 'b'],
+                  bad:  ['c', 'd', 'e'],
+                  soso: ['f']
+                 };
+
+    return { list: result };
+  });
+  */
+
 myApp.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
     $routeProvider.
@@ -8,18 +22,7 @@ myApp.config(['$routeProvider', '$locationProvider',
       }).
       when('/good', {
         templateUrl: 'html/partials/good-stooges.html',
-        controller: 'GoodStoogeController',
-        resolve: {
-          app: function ($q) {
-                 var d = new Date();
-                 console.log(d);
-                 var defer = $q.defer();
-                 defer.resolve();
-                 d = new Date();
-                 console.log(d);
-                 return defer.promise;
-               }
-        }
+        controller: 'GoodStoogeController'
       }).
       when('/bad', {
         templateUrl: 'html/partials/bad-stooges.html',
@@ -36,13 +39,7 @@ myApp.config(['$routeProvider', '$locationProvider',
       $locationProvider.html5Mode(true);
   }]);
 
-/*
-myApp.controller('MainController', ['$scope', '$http', function($scope, $http) {
-  $scope.dynamic_text = "This is text added by Angular";
-}]);
-*/
-
-myApp.controller('GoodStoogeController', ['$scope', '$http', function($scope, $http) {
+myApp.controller('GoodStoogeController', ['$scope', '$http', 'stoogesService', function($scope, $http) {
 
   $http.get('/api/stooges').
     success(function(data, status, headers, config) {
