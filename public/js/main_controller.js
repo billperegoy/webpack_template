@@ -1,18 +1,29 @@
 var myApp = angular.module('mainApp',['ngRoute']);
 
-myApp.service('stoogesService', function() {
+myApp.service('stoogesService', function($http, $q) {
+
+  function get_stooges() {
+
+    var defered;
+    deferred = $q.defer();
+    return  ["a", "x", "y", "z"] ;
+
+    $http.get('/api/stooges').
+      success(function(data, status, headers, config) {
+        alert("success");
+        deferred.resolve(data)
+        alert(data.good);
+        return data.good;
+      });
+  }
+
+  return {       
+           list: function() {
+            return get_stooges();
+           }
+         }
 });
 
-/*
-  .factory('stoogesService', function() {
-    var result = {good: ['a', 'b'],
-                  bad:  ['c', 'd', 'e'],
-                  soso: ['f']
-                 };
-
-    return { list: result };
-  });
-  */
 
 myApp.config(['$routeProvider', '$locationProvider',
   function($routeProvider, $locationProvider) {
@@ -39,12 +50,15 @@ myApp.config(['$routeProvider', '$locationProvider',
       $locationProvider.html5Mode(true);
   }]);
 
-myApp.controller('GoodStoogeController', ['$scope', '$http', 'stoogesService', function($scope, $http) {
+myApp.controller('GoodStoogeController', ['$scope', '$http', 'stoogesService', function($scope, $http, stoogesService) {
 
+  $scope.stooges = stoogesService.list();
+  /*
   $http.get('/api/stooges').
     success(function(data, status, headers, config) {
       $scope.stooges = data.good;
     })
+    */
 }]);
 
 myApp.controller('BadStoogeController', ['$scope', '$http', function($scope, $http) {

@@ -19,10 +19,6 @@ end
 # This is a singe page web app, so all routing 
 # is done using Angular.
 #
-get '/' do
-  send_file 'public/html/index.html'
-end
-
 get '/*' do
   send_file 'public/html/index.html'
 end
